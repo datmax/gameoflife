@@ -1,9 +1,16 @@
-let size = 10;
+/*This is only a prototype.
+  Many fucntionalities are still not implemented
+  (like a start button, the possibility of clicking on the canvas to
+  give life to a cell and a grid size editor).
+  Any type of feedback is appreciated.
+*/
+
+let size = 10; //size of a square
 let board = [];
 
 var canvas = document.getElementById("c");
-canvas.width = 400;
-canvas.height = 400;
+canvas.width = 100;
+canvas.height = 100;
 var ctx = canvas.getContext("2d");
 
 function generate(){
@@ -24,9 +31,11 @@ function generate(){
 
 function update(){
     render();
+    nextGeneration();
 }
 
-
+/*This is to check wheter a cell will be alive or dead in the next gen.
+  Rules are on the wiki: https://en.wikipedia.org/wiki/Conway's_Game_of_Life*/
 function isAlive(x, y){
     let alive = 0;
 
@@ -81,5 +90,4 @@ function render(){
 
 
 generate();
-setInterval(update,5000);
-setInterval(nextGeneration,5000);
+setInterval(update,2000);
