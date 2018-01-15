@@ -11,9 +11,16 @@ let clonedBoard = [];
 let width, height;
 
 const canvas = document.getElementById("c");
-width = canvas.width = 600;
-height = canvas.height = 600;
+width = canvas.width = window.innerWidth * 0.9;
+height = canvas.height = window.innerHeight * 0.8;
 const ctx = canvas.getContext("2d");
+
+
+function resize(){
+  width = canvas.width = window.innerWidth * 0.9;
+  height = canvas.height = window.innerHeight * 0.8;
+  generate();
+}
 
 function generate(){
     for(let x = -size ; x < width + size; x+= size){
@@ -64,6 +71,6 @@ function update() {
   }
 
 
-
+window.addEventListener("resize", resize, false);
 generate();
 setInterval(update,60);
